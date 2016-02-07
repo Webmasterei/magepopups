@@ -46,11 +46,36 @@ echo $skype.'<br>';
 echo $whatsapp.'<br>';
 echo $template.'<br>';
 ?>
-
-<div class="shadowbox">
-    <div id="<?php echo $trigger ?>" class="magepopup <?php echo $trigger ?>">
-        <span class="close">X</span>
+<button id="myBtn">Open Modal</button>
+<div id="shadowbox" class="shadowbox">
+    <div id="magepopup" class="magepopup <?php echo $trigger ?>">
+        <span id="close" class="close">X</span>
         <?php if($title) { ?> <div class="title"><?php echo $title ?></div> <?php } ?>
         <?php if($title) { ?> <div class="message"><?php echo $message ?></div> <?php } ?>
     </div>
 </div>
+
+<?php if($trigger=="exitintent") : ?>
+<script>
+    ouibounce(document.getElementById('shadowbox'), {
+        aggressive: true,
+        timer: <?php echo $exitintent_delay ?>,
+        sitewide: true
+    });
+</script>
+<?php endif; ?>
+<?php if($trigger=='scrolldepth') : ?>
+    <script>
+        jQuery(document).ready(function($){
+
+            $(window).on('scroll', function() {
+            var y_scroll_pos = window.pageYOffset;
+            var scroll_pos_test = 10;             // set to whatever you want it to be
+
+            if(y_scroll_pos > scroll_pos_test) {
+                $('#shadowbox').show();
+            }
+        });
+            });
+    </script>
+<?php endif; ?>
