@@ -9,7 +9,7 @@ app/code/*
 app/code/community/*
 !app/code/community/Webmasterei/
 app/code/community/Webmasterei/*
-!app/code/community/Webmasterei/magepopups
+!app/code/community/Webmasterei/Magepopups
 
 !app/design/
 app/design/*

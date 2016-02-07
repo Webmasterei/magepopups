@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<widgets>
+    <webmasterei_popup type="magepopups/popup" translate="Exit Intent" module="magepopups">
+        <name>Webmasterei Popup</name>
+        <description>A popup, showing when widget conditions are met.</description>
+        <parameters>
+            <trigger>
+                <label>Trigger Event</label>
+                <description>Event that triggers the Popup</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <exitintent>
+                        <value>exitintent</value>
+                        <label>Exit intent</label>
+                    </exitintent>
+                    <inactivity>
+                        <value>inactivity</value>
+                        <label>Inactivity on Site</label>
+                    </inactivity>
+                    <scrolldepth>
+                        <value>scrolldepth</value>
+                        <label>Scrolltiefe des Browsers</label>
+                    </scrolldepth>
+                    <timeonpage>
+                        <value>timeonpage</value>
+                        <label>Time of Pagevisit</label>
+                    </timeonpage>
+                </values>
+            </trigger>
+            <exitintent_delay>
+                <label>Exit intent delay</label>
+                <description>Set the Delay Time for exit intent in Millisecons</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>200</value>
+                <depends>
+                    <trigger>
+                        <value>exitintent</value>
+                    </trigger>
+                </depends>
+            </exitintent_delay>
+            <inactivity_delay>
+                <label>Time of inactivity</label>
+                <description>Time the user does not move mouse or scroll.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>15</value>
+                <depends>
+                    <trigger>
+                        <value>inactivity</value>
+                    </trigger>
+                </depends>
+            </inactivity_delay>
+            <scrolldepth>
+                <label>Scroll depth in percent (%)</label>
+                <description>Set a scrolldepth until Widget starts appearing.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>50</value>
+                <depends>
+                    <trigger>
+                        <value>scrolldepth</value>
+                    </trigger>
+                </depends>
+            </scrolldepth>
+            <timeonpage>
+                <label>Time on Page</label>
+                <description>Event fires if user is X seconds on page.</description>
+                <visible>1</visible>
+                <type>text</type>
+                <value>20</value>
+                <depends>
+                    <trigger>
+                        <value>timeonpage</value>
+                    </trigger>
+                </depends>
+            </timeonpage>
+            <title>
+                <label>Titel</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+            </title>
+            <message>
+                <label>Message</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+            </message>
+            <coupon>
+                <label>Coupon yes/no</label>
+                <description>Set if you need a Coupon</description>
+                <visible>1</visible>
+                <type>select</type>
+                <value>0</value>
+                <values>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
+                    <no>
+                        <label>No</label>
+                        <value>0</value>
+                    </no>
+                </values>
+            </coupon>
+            <coupon_code>
+                <label>Coupon Code</label>
+                <description>If you are offering a coupon, place the Code here.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <depends>
+                    <coupon><value>1</value></coupon>
+                </depends>
+            </coupon_code>
+            <button>
+                <label>Button yes/no</label>
+                <description>Set if you need a Button</description>
+                <visible>1</visible>
+                <type>select</type>
+                <value>0</value>
+                <values>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
+                    <no>
+                        <label>No</label>
+                        <value>0</value>
+                    </no>
+                </values>
+            </button>
+            <button_text>
+                <label>Button Text</label>
+                <description>text of the Button here.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <depends>
+                    <button><value>1</value></button>
+                </depends>
+            </button_text>
+            <button_link>
+                <label>Button Link</label>
+                <description>If you have a button, place the Text here.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <depends>
+                    <button><value>1</value></button>
+                </depends>
+            </button_link>
+            <cmsblock type="complex" translate="cmsblock">
+                <label>CMS Block</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/cms_block_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Block...</open>
+                        </button>
+                    </data>
+                </helper_block>
+            </cmsblock>
+        </parameters>
+    </webmasterei_popup>
+</widgets>

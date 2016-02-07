@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Webmasterei_Magepopups>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Webmasterei_Magepopups>
+    </modules>
+</config>
