@@ -6,7 +6,7 @@ Webmasterei_Magepopups XML File
 -->
 <layout version="0.1.0">
     <default>
-        <reference>
+        <reference name="head">
             <action method="addJs"><script>magepopups/ouibounce.js</script></action>
         </reference>
     </default>

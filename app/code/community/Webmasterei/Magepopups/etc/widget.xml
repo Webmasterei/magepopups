@@ -239,6 +239,12 @@
                     <help><value>1</value></help>
                 </depends>
             </whatsapp>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/magepopups/popup.phtml</value>
+            </template>
         </parameters>
     </webmasterei_popup>
 </widgets>

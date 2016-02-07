@@ -17,4 +17,13 @@
             </magepopups>
         </blocks>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <webmasterei_magepopups>
+                    <file>magepopups.xml</file>
+                </webmasterei_magepopups>
+            </updates>
+        </layout>
+    </frontend>
 </config>
