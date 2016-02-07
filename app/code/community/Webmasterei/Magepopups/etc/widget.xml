@@ -119,6 +119,12 @@
                     <coupon><value>1</value></coupon>
                 </depends>
             </coupon_code>
+            <subscription>
+                <label>Newsletter Subscription</label>
+                <label>Set a newsletter Subscription "action" link to the form.</label>
+                <visible>1</visible>
+                <type>text</type>
+            </subscription>
             <button>
                 <label>Button yes/no</label>
                 <description>Set if you need a Button</description>
@@ -158,6 +164,7 @@
             </button_link>
             <cmsblock type="complex" translate="cmsblock">
                 <label>CMS Block</label>
+                <desciption>If you choose that, no other content from this widget will be shown.</desciption>
                 <visible>1</visible>
                 <required>1</required>
                 <type>label</type>
@@ -170,6 +177,68 @@
                     </data>
                 </helper_block>
             </cmsblock>
+            <help>
+                <label>Hilfe Block</label>
+                <description>Choosing this, the whole thing becomes a help-block</description>
+                <visible>1</visible>
+                <type>select</type>
+                <value>0</value>
+                <values>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
+                    <no>
+                        <label>No</label>
+                        <value>0</value>
+                    </no>
+                </values>
+            </help>
+            <phone>
+                <label>Phone</label>
+                <description>Set you phone Number</description>
+                <visible>1</visible>
+                <type>text</type>
+                <depends>
+                    <help><value>1</value></help>
+                </depends>
+            </phone>
+            <e-mail>
+                <label>E-Mail</label>
+                <description>Set you phone E-Mail</description>
+                <visible>1</visible>
+                <type>text</type>
+                <depends>
+                    <help><value>1</value></help>
+                </depends>
+            </e-mail>
+            <chat>
+                <label>Chat</label>
+                <description>Set a Link to a chat-Popup</description>
+                <visible>1</visible>
+                <type>text</type>
+                <depends>
+                    <help><value>1</value></help>
+                </depends>
+            </chat>
+            <skype>
+                <label>Skype</label>
+                <description>Set your Skype Name</description>
+                <visible>1</visible>
+                <type>text</type>
+                <depends>
+                    <help><value>1</value></help>
+                </depends>
+            </skype>
+            <whatsapp>
+                <label>Whatsapp</label>
+                <description>Set your WhatsApp Account</description>
+                <visible>1</visible>
+                <type>text</type>
+                <depends>
+                    <help><value>1</value></help>
+                </depends>
+            </whatsapp>
         </parameters>
     </webmasterei_popup>
 </widgets>
