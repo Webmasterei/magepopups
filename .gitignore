@@ -35,5 +35,7 @@ app/etc/modules/*
 
 !js/
 js/*
-!js/ouibounce.js
+!js/magepopups
+js/magepopups/*
+!js/magepopups/ouibounce.js
 
