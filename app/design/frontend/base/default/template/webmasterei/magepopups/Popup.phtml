@@ -1,0 +1,56 @@
+<?php
+// This ist Pop Template for Magento.
+
+// get all variables
+$trigger = $this->getData('trigger');
+$exitintent_delay = $this->getData('exitintent_delay');
+$inactivity_delay = $this->getData('inactivity_delay');
+$scrolldepth = $this->getData('scrolldepth');
+$timeonpage = $this->getData('timeonpage');
+$title = $this->getData('title');
+$message = $this->getData('message');
+$coupon = $this->getData('coupon');
+$coupon_code = $this->getData('coupon_code');
+$subscription = $this->getData('scubscription');
+$button = $this->getData('button');
+$button_text = $this->getData('button_text');
+$button_link = $this->getData('button_link');
+$cmsblock = $this->getData('cmsblock');
+$help = $this->getData('help');
+$phone = $this->getData('phone');
+$email = $this->getData('email');
+$chat = $this->getData('chat');
+$skype = $this->getData('skype');
+$whatsapp = $this->getData('whatsapp');
+$template = $this->getData('template');
+
+echo $trigger.'<br>';
+echo $exitintent_delay.'<br>';
+echo $inactivity_delay.'<br>';
+echo $scrolldepth.'<br>';
+echo $timeonpage.'<br>';
+echo $title.'<br>';
+echo $message.'<br>';
+echo $coupon.'<br>';
+echo $coupon_code.'<br>';
+echo $subscription.'<br>';
+echo $button.'<br>';
+echo $button_text.'<br>';
+echo $button_link.'<br>';
+echo $cmsblock.'<br>';
+echo $help.'<br>';
+echo $phone.'<br>';
+echo $email.'<br>';
+echo $chat.'<br>';
+echo $skype.'<br>';
+echo $whatsapp.'<br>';
+echo $template.'<br>';
+?>
+
+<div class="shadowbox">
+    <div id="<?php echo $trigger ?>" class="magepopup <?php echo $trigger ?>">
+        <span class="close">X</span>
+        <?php if($title) { ?> <div class="title"><?php echo $title ?></div> <?php } ?>
+        <?php if($title) { ?> <div class="message"><?php echo $message ?></div> <?php } ?>
+    </div>
+</div>

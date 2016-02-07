@@ -43,6 +43,16 @@ app/etc/modules/*
 !js/
 js/*
 !js/magepopups
-js/magepopups/*
-!js/magepopups/ouibounce.js
 
+
+!skin/
+skin/*
+!skin/frontend/
+skin/frontend/*
+!skin/frontend/base/
+skin/frontend/base/*
+!skin/frontend/base/default/
+skin/frontend/base/default/*
+!skin/frontend/base/default/css/
+skin/frontend/base/default/css/*
+!skin/frontend/base/default/css/magepopups.css
