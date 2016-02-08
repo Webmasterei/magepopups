@@ -44,7 +44,7 @@
             </exitintent_delay>
             <inactivity_delay>
                 <label>Time of inactivity</label>
-                <description>Time the user does not move mouse or scroll.</description>
+                <description>Time the user is idle in seconds.</description>
                 <visible>1</visible>
                 <required>1</required>
                 <type>text</type>
@@ -149,14 +149,14 @@
                 <type>select</type>
                 <value>0</value>
                 <values>
-                    <yes>
-                        <label>Yes</label>
-                        <value>1</value>
-                    </yes>
                     <no>
                         <label>No</label>
                         <value>0</value>
                     </no>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
                 </values>
             </button>
             <button_text>
