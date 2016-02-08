@@ -66,16 +66,29 @@ echo $template.'<br>';
 <?php endif; ?>
 <?php if($trigger=='scrolldepth') : ?>
     <script>
-        jQuery(document).ready(function($){
-
-            $(window).on('scroll', function() {
-            var y_scroll_pos = window.pageYOffset;
-            var scroll_pos_test = 10;             // set to whatever you want it to be
-
-            if(y_scroll_pos > scroll_pos_test) {
-                $('#shadowbox').show();
-            }
-        });
+        jQuery( document ).ready(function($) {
+            var height = $(document).height()-$(window).height();
+            var scrolldepth = 0;
+            var toTop = 0;
+            var opened = 0;
+            var cookie = Cookies.get('popup')
+            $(window).scroll(function(event) {
+                toTop = $(window).scrollTop();
+                scrolldepth = toTop/height;
+                console.log(scrolldepth);
+                if(scrolldepth ><?php echo $scrolldepth/100 ?> && opened==0) {
+                    if(!cookie) {
+                        $('#shadowbox').fadeIn();
+                        opened = 1
+                    }
+                }
             });
+
+            $('#close').click(function(){
+                Cookies.set('popup', 'closed');
+            });
+
+
+        });
     </script>
 <?php endif; ?>
