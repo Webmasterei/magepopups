@@ -100,13 +100,13 @@
             <title>
                 <label>Titel</label>
                 <visible>1</visible>
-                <required>1</required>
+                <required>0</required>
                 <type>text</type>
             </title>
             <message>
                 <label>Message</label>
                 <visible>1</visible>
-                <required>1</required>
+                <required>0</required>
                 <type>text</type>
             </message>
             <coupon>
@@ -116,14 +116,15 @@
                 <type>select</type>
                 <value>0</value>
                 <values>
-                    <yes>
-                        <label>Yes</label>
-                        <value>1</value>
-                    </yes>
                     <no>
                         <label>No</label>
                         <value>0</value>
                     </no>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
+
                 </values>
             </coupon>
             <coupon_code>
@@ -201,14 +202,14 @@
                 <type>select</type>
                 <value>0</value>
                 <values>
-                    <yes>
-                        <label>Yes</label>
-                        <value>1</value>
-                    </yes>
                     <no>
                         <label>No</label>
                         <value>0</value>
                     </no>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
                 </values>
             </help>
             <phone>

@@ -29,3 +29,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
         }
     }
 }, false );
+
+jQuery(document).ready(function ($) {
+    $('#deletecookie').click( function() {
+        Cookies.remove('popup');
+    });
+});
