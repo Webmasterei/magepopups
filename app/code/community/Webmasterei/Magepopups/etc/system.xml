@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <webmasterei translate="label" module="magepopups">
+            <label>webmasterei Extensions</label>
+            <sort_order>100</sort_order>
+        </webmasterei>
+    </tabs>
+    <sections>
+        <magepopups translate="label" module="magepopups">
+            <label>Magepopups</label>
+            <tab>webmasterei</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <magepopups_blocks translate="label" module="magepopups">
+                    <label>Page Type Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <magepopups_home translate="label">
+                            <label>Homepage Popup: </label>
+                            <comment>Give a widget ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_home>
+                        <magepopups_category_ids translate="label">
+                            <label>Categorie ID csv list</label>
+                            <comment>Category ID comma seperat no spaces</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_category_ids>
+                        <magepopups_category_block translate="label">
+                            <label>Category Widget</label>
+                            <comment>Give a widget ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_category_block>
+                        <magepopups_product_block translate="label">
+                            <label>Products Widget</label>
+                            <comment>Give a widget ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_product_block>
+                        <magepopups_cms_pages translate="label">
+                            <label>CMS Pages slug list (csv): </label>
+                            <comment>CSV List of page slugs.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_cms_pages>
+                        <magepopups_cms_block translate="label">
+                            <label>CMS Pages Widget</label>
+                            <comment>Give a widget ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_cms_block>
+                        <magepopups_cart_block translate="label">
+                            <label>Cart Widget</label>
+                            <comment>Give a widget ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_cart_block>
+                        <magepopups_checkout_index_block translate="label">
+                            <label>Onepage Checkout Widget ID</label>
+                            <comment>Give a widget ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_checkout_index_block>
+                        <magepopups_checkout_success_block translate="label">
+                            <label>Success Page Widget ID</label>
+                            <comment>Give a widget ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magepopups_checkout_success_block>
+                     <!--   <magepopups_select translate="label">
+                            <label>My Dropdown: </label>
+                            <comment>Source model provider Magento's default Yes/No values</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </magepopups_select> -->
+                    </fields>
+                </magepopups_blocks>
+            </groups>
+        </magepopups>
+    </sections>
+</config>

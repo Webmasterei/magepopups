@@ -6,6 +6,11 @@
         </Webmasterei_Magepopups>
     </modules>
     <global>
+        <models>
+            <magepopups>
+                <class>Webmasterei_Magepopups_Model</class>
+            </magepopups>
+        </models>
         <helpers>
             <magepopups>
                 <class>Webmasterei_Magepopups_Helper</class>

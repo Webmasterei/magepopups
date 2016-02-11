@@ -1,0 +1,22 @@
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <magepopups translate="title" module="webmasterei_magepopups">
+                                        <title>Webmasterei Magepopups</title>
+                                        <sort_order>999</sort_order>
+                                    </magepopups>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
