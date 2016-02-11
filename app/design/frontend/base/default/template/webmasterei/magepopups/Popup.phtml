@@ -65,7 +65,9 @@ echo $template.'<br>';
         if(!cookie) {
                 $( document ).on( "mousemove", function( event ) {
                     if(event.pageY < 10 && opened==0) {
-                        $('#shadowbox').fadeIn();
+                        setTimeout(function() {
+                            $('#shadowbox').fadeIn();
+                        },<?php echo $exitintent_delay ?>);
                         opened = 1;
                         console.log(opened);
                     }

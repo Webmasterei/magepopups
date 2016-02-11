@@ -58,3 +58,7 @@ skin/frontend/base/default/*
 !skin/frontend/base/default/css/
 skin/frontend/base/default/css/*
 !skin/frontend/base/default/css/magepopups.css
+
+!skin/frontend/base/default/scss/
+skin/frontend/base/default/scss/*
+!skin/frontend/base/default/scss/magepopups.scss
