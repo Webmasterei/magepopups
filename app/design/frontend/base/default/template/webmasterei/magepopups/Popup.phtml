@@ -11,7 +11,9 @@ $title = $this->getData('title');
 $message = $this->getData('message');
 $coupon = $this->getData('coupon');
 $coupon_code = $this->getData('coupon_code');
-$subscription = $this->getData('scubscription');
+$subscription = $this->getData('subscription');
+$subscription_provider = $this->getData('subscription_provider');
+$subscription_link = $this->getData('subscription_link');
 $button = $this->getData('button');
 $button_text = $this->getData('button_text');
 $button_link = $this->getData('button_link');
@@ -33,7 +35,9 @@ echo $title.'<br>';
 echo $message.'<br>';
 echo $coupon.'<br>';
 echo $coupon_code.'<br>';
-echo $subscription.'<br>';
+echo 'Subscription: '.$subscription.'<br>';
+echo 'subscription_provider: '.$subscription_provider.'<br>';
+echo $subscription_link.'<br>';
 echo $button.'<br>';
 echo $button_text.'<br>';
 echo $button_link.'<br>';
@@ -45,18 +49,85 @@ echo $chat.'<br>';
 echo $skype.'<br>';
 echo $whatsapp.'<br>';
 echo $template.'<br>';
+
+if($trigger=="exitintent") {
+    $triggerdata = "popup-trigger=\"".$trigger."\"";
+    $parameters = "popup-time=\"".$exitintent_delay."\"";
+
+}
+if($trigger=="scrolldepth") {
+    $triggerdata = "popup-trigger=\"".$trigger."\"";
+    $parameters = "popup-scrolldepth=\"".$scrolldepth."\"";
+}
+if($trigger=="inactivity") {
+    $triggerdata = "popup-trigger=\"".$trigger."\"";
+    $parameters = "popup-time=\"".$inactivity_delay."\"";
+}
+if($trigger=="timeonpage") {
+    $triggerdata = "popup-trigger=\"".$trigger."\"";
+    $parameters = "popup-time=\"".$timeonpage."\"";
+}
 ?>
+
 <button id="myBtn">Open Modal</button>
-<div id="shadowbox" class="shadowbox">
+<div id="shadowbox" class="shadowbox" <?php echo $triggerdata.' '.$parameters ?> >
     <div id="magepopup" class="magepopup <?php echo $trigger ?>">
         <span id="close" class="close">X</span>
-        <?php if($title) { ?> <div class="title"><?php echo $title ?></div> <?php } ?>
-        <?php if($title) { ?> <div class="message"><?php echo $message ?></div> <?php } ?>
+        <?php if($cmsblock) : ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($cmsblock)->toHtml() ?>
+        <?php else : ?>
+            <?php if($title) : ?> <div class="title"><?php echo $title ?></div> <?php endif; ?>
+            <?php if($message) : ?> <div class="message"><?php echo $message ?></div> <?php endif; ?>
+            <?php if($coupon) : ?> <div class="coupon"><input value="<?php echo $coupon_code ?>" readonly><button class="button emailcopybtn">Copy</button></div> <?php endif; ?>
+            <?php if($subscription) : ?>
+                <div class="newsletter">
+                    <?php if($subscription_provider=="magento") : ?>
+                        <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('webmasterei/magepopups/subscribe.phtml')->toHtml(); ?>
+                    <?php elseif($subscription_provider=="cleverreach") : ?>
+                        <form class="layout_form cr_form cr_font" action="<?php echo $subscription_link ?>wcs/" method="post" target="_blank">
+                            <div class="cr_body cr_page cr_font formbox">
+                                <div class="input-box">
+                                    <label for="" class="itemname">E-Mail*</label> <input name="email" value="" type="text" class="input-text required-entry validate-email" />
+                                    <button type="submit" class="button"><?php echo $this->__('Subscribe') ?> </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+            <?php if($button) : ?>
+                <a class="button popupbutton" href="<?php echo $button_link ?>"><?php echo $button_text ?></a>
+            <?php endif; ?>
+            <?php if($help) : ?>
+                <dl class="phone">
+                    <dt><?php echo $this->__('Call us: ') ?></dt>
+                    <dd><a href="tel:<?php echo preg_replace("/^0/", "+49" ,$phone ); ?>"><?php echo $phone ?></a></dd>
+                </dl>
+                <ul class="help-col">
+                    <li><a class="button" href="<?php echo $email ?>"><?php echo $this->__('E-Mail') ?></a></li>
+                    <li><a class="button" href="<?php echo $chat ?>">Chat</a></li>
+                    <li><a class="button" href="skype:<?php echo $skype; ?>?call" onclick="Skype.tryAnalyzeSkypeUri('call', '0');"><?php echo $this->__('Skype') ?></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            <?php endif; ?>
+        <?php endif; ?>
     </div>
 </div>
 
 <button id="deletecookie">Delete Cookie</button>
+<script>
+    /* Development Stuff */
+    jQuery(document).ready( function($){
+        console.log(Cookies.get('popup'));
 
+        $('#deletecookie').click( function() {
+            Cookies.remove('popup');
+        });
+    });
+
+
+</script>
 <?php if($trigger=="exitintent") : ?>
 <script>
     jQuery( document ).ready(function($) {

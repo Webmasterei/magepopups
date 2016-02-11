@@ -31,7 +31,34 @@ document.addEventListener( 'DOMContentLoaded', function () {
 }, false );
 
 jQuery(document).ready(function ($) {
-    $('#deletecookie').click( function() {
-        Cookies.remove('popup');
+// Set cookie to not call Popup after subscription
+    $('.newsletter button').click(function () {
+        Cookies.set('popup','submitted');
+    })
+
+    var copyEmailBtn = document.querySelector('.emailcopybtn');
+    if(copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', function(event) {
+        // Select the email link anchor text
+        var emailLink = document.querySelector('.coupon input');
+        var range = document.createRange();
+        range.selectNode(emailLink);
+        window.getSelection().addRange(range);
+
+        try {
+            // Now that we've selected the anchor text, execute the copy command
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            $('.coupon input').css('background-color',"#2c87f0");
+            $('.coupon input').css('color',"white");
+        } catch(err) {
+        }
+
+        // Remove the selections - NOTE: Should use
+        // removeRange(range) when it is supported
+        window.getSelection().removeAllRanges();
     });
+    }
 });
+
+

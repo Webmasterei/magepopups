@@ -1,3 +1,53 @@
+
+// Here we define the breakpoints which will become the upper border for each media size.
+// The function em-calc() calculates the em-value from a px-value.
+$small-breakpoint:  640  !default;
+$medium-breakpoint: 1024 !default;
+$large-breakpoint:  1440 !default;
+$xlarge-breakpoint: 1920 !default;
+$xxlarge-breakpoint: 9999999 !default;
+
+
+// Media Queries
+$screen: "only screen" !default;
+
+$landscape: "#{$screen} and (orientation: landscape)" !default;
+$portrait: "#{$screen} and (orientation: portrait)" !default;
+
+$small-up: $screen !default;
+$small-only: "#{$screen} and (max-width: #{$small-breakpoint}px)" !default;
+
+$medium-up: "#{$screen} and (min-width:#{$small-breakpoint+1}px)" !default;
+$medium-only: "#{$screen} and (min-width:#{$small-breakpoint+1}px) and (max-width:#{$medium-breakpoint}px)" !default;
+
+$large-up: "#{$screen} and (min-width:#{$medium-breakpoint+1}px)" !default;
+$large-only: "#{$screen} and (min-width:#{$medium-breakpoint+1}px) and (max-width:#{$large-breakpoint}px)" !default;
+
+$xlarge-up: "#{$screen} and (min-width:#{$large-breakpoint+1}px)" !default;
+$xlarge-only: "#{$screen} and (min-width:#{$large-breakpoint+1}px) and (max-width:#{$xlarge-breakpoint})" !default;
+
+$xxlarge-up: "#{$screen} and (min-width:#{$xlarge-breakpoint+1}px)" !default;
+$xxlarge-only: "#{$screen} and (min-width:#{$xlarge-breakpoint+1}px) and (max-width:#{$xxlarge-breakpoint}px)" !default;
+
+$retina: (
+        "#{$screen} and (-webkit-min-device-pixel-ratio: 2)",
+        "#{$screen} and (min--moz-device-pixel-ratio: 2)",
+        "#{$screen} and (-o-min-device-pixel-ratio: 2/1)",
+        "#{$screen} and (min-device-pixel-ratio: 2)",
+        "#{$screen} and (min-resolution: 192dpi)",
+        "#{$screen} and (min-resolution: 2dppx)"
+);
+
+$brand-primary : #ecd05a;
+$brand-font-color: #FFFFFF;
+$font-size-base: 1rem;
+$font-size-medium: $font-size-base*1.5;
+$font-size-large: $font-size-base*2;
+$border-radius:5px;
+
+.clearfix {
+  clear: both;
+}
 .shadowbox {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -14,13 +64,95 @@
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
-  width: 40em; /* Could be more or less, depending on screen size */
+  border: 5px solid $brand-primary;
+  width: 95%; /* Could be more or less, depending on screen size */
   position:relative;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  text-align:center;
+  a, a:hover, a:focus, a:visited {
+    color: $brand-primary;
+  }
+  .title {
+    font-size: $font-size-large;
+  }
+  .message {
+    font-weight:normal;
+  }
+  .coupon {
+    display: table;
+    width: 100%;
+  }
+  .newsletter {
+
+  }
+  input, button {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  input {
+    margin: 1rem auto;
+    text-align: center;
+    font-size: $font-size-medium;
+    vertical-align: middle;
+  }
+  .button {
+    margin-left: 1rem;
+    font-size: $font-size-medium;
+    color: $brand-font-color;
+    background-color: $brand-primary;
+    border-radius: $border-radius;
+    padding: 0.3rem 1rem;
+    border:1px;
+    line-height: $font-size-large;
+  }
+  .popupbutton {
+    margin:auto 1rem;
+  }
+  .phone {
+    font-size: $font-size-medium;
+    font-weight:bold;
+    margin:1rem auto;
+    dt, dd {
+      display: block;
+    }
+  }
+  .help-col {
+    max-width: 40em;
+   li {
+     margin:1rem auto;
+     list-style-type: none;
+     text-align: center;
+     img {
+       margin:auto;
+     }
+   }
+  }
+
+}
+
+@media #{$medium-up} {
+
+  .magepopup {
+    width: 40em;
+    .phone {
+      font-size: $font-size-medium;
+      font-weight: bold;
+      margin: 1rem auto;
+      dt, dd {
+        display: inline;
+      }
+    }
+    .help-col {
+      li {
+        float:left;
+        width: 33%;
+      }
+    }
+  }
+
 }
 
 /* Add Animation */

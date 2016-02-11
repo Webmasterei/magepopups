@@ -1,3 +1,6 @@
+.clearfix {
+  clear: both; }
+
 .shadowbox {
   display: none;
   /* Hidden by default */
@@ -23,15 +26,70 @@
   margin: 15% auto;
   /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
-  width: 40em;
+  border: 5px solid #ecd05a;
+  width: 95%;
   /* Could be more or less, depending on screen size */
   position: relative;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s; }
+  animation-duration: 0.4s;
+  text-align: center; }
+  .magepopup a, .magepopup a:hover, .magepopup a:focus, .magepopup a:visited {
+    color: #ecd05a; }
+  .magepopup .title {
+    font-size: 2rem; }
+  .magepopup .message {
+    font-weight: normal; }
+  .magepopup .coupon {
+    display: table;
+    width: 100%; }
+  .magepopup input, .magepopup button {
+    display: table-cell;
+    vertical-align: middle; }
+  .magepopup input {
+    margin: 1rem auto;
+    text-align: center;
+    font-size: 1.5rem;
+    vertical-align: middle; }
+  .magepopup .button {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    background-color: #ecd05a;
+    border-radius: 5px;
+    padding: 0.3rem 1rem;
+    border: 1px;
+    line-height: 2rem; }
+  .magepopup .popupbutton {
+    margin: auto 1rem; }
+  .magepopup .phone {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem auto; }
+    .magepopup .phone dt, .magepopup .phone dd {
+      display: block; }
+  .magepopup .help-col {
+    max-width: 40em; }
+    .magepopup .help-col li {
+      margin: 1rem auto;
+      list-style-type: none;
+      text-align: center; }
+      .magepopup .help-col li img {
+        margin: auto; }
 
+@media only screen and (min-width: 641px) {
+  .magepopup {
+    width: 40em; }
+    .magepopup .phone {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 1rem auto; }
+      .magepopup .phone dt, .magepopup .phone dd {
+        display: inline; }
+    .magepopup .help-col li {
+      float: left;
+      width: 33%; } }
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {

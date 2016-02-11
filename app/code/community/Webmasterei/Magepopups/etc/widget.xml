@@ -138,11 +138,51 @@
                 </depends>
             </coupon_code>
             <subscription>
+                <label>Subscription yes/no</label>
+                <description>Set if you need a Coupon</description>
+                <visible>1</visible>
+                <type>select</type>
+                <value>0</value>
+                <values>
+                    <no>
+                        <label>No</label>
+                        <value>0</value>
+                    </no>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
+                </values>
+            </subscription>
+            <subscription_provider>
+                <label>Provider</label>
+                <description>Select the Mailform you want to use.</description>
+                <visible>1</visible>
+                <type>select</type>
+                <value>magento</value>
+                <values>
+                    <no>
+                        <label>Magento</label>
+                        <value>magento</value>
+                    </no>
+                    <yes>
+                        <label>Cleverreach</label>
+                        <value>cleverreach</value>
+                    </yes>
+                </values>
+                <depends>
+                    <subscription><value>1</value></subscription>
+                </depends>
+            </subscription_provider>
+            <subscription_link>
                 <label>Newsletter Subscription</label>
-                <label>Set a newsletter Subscription "action" link to the form.</label>
+                <label>Set a newsletter Subscription "action" link to the form. Leave Blank to use Magento's Newsletter List.</label>
                 <visible>1</visible>
                 <type>text</type>
-            </subscription>
+                <depends>
+                    <subscription><value>1</value></subscription>
+                </depends>
+            </subscription_link>
             <button>
                 <label>Button yes/no</label>
                 <description>Set if you need a Button</description>
@@ -221,7 +261,7 @@
                     <help><value>1</value></help>
                 </depends>
             </phone>
-            <e-mail>
+            <email>
                 <label>E-Mail</label>
                 <description>Set you phone E-Mail</description>
                 <visible>1</visible>
@@ -229,7 +269,7 @@
                 <depends>
                     <help><value>1</value></help>
                 </depends>
-            </e-mail>
+            </email>
             <chat>
                 <label>Chat</label>
                 <description>Set a Link to a chat-Popup</description>
