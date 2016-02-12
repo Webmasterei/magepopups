@@ -220,12 +220,32 @@
                     <button><value>1</value></button>
                 </depends>
             </button_link>
+            <cmsblock_yesno>
+                <label>Show CMS Block yes/no</label>
+                <description>If set, the CMS Block below is used.</description>
+                <visible>1</visible>
+                <type>select</type>
+                <value>0</value>
+                <values>
+                    <no>
+                        <label>No</label>
+                        <value>0</value>
+                    </no>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
+                </values>
+            </cmsblock_yesno>
             <cmsblock type="complex" translate="cmsblock">
                 <label>CMS Block</label>
                 <desciption>If you choose that, no other content from this widget will be shown.</desciption>
                 <visible>1</visible>
                 <required>0</required>
                 <type>label</type>
+                <depends>
+                    <cmsblock_yesno><value>1</value></cmsblock_yesno>
+                </depends>
                 <helper_block>
                     <type>adminhtml/cms_block_widget_chooser</type>
                     <data>

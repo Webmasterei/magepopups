@@ -88,7 +88,12 @@
       .magepopup .phone dt, .magepopup .phone dd {
         display: inline; }
     .magepopup .help-col li {
-      float: left;
+      float: left; }
+    .magepopup .help-col.col-1 li {
+      width: 100%; }
+    .magepopup .help-col.col-2 li {
+      width: 50%; }
+    .magepopup .help-col.col-3 li {
       width: 33%; } }
 /* Add Animation */
 @-webkit-keyframes animatetop {

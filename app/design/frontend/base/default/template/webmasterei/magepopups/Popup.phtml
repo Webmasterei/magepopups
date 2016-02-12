@@ -1,7 +1,4 @@
 <?php
-// This ist Pop Template for Magento.
-
-// get all variables
 $trigger = $this->getData('trigger');
 $exitintent_delay = $this->getData('exitintent_delay');
 $inactivity_delay = $this->getData('inactivity_delay');
@@ -17,6 +14,7 @@ $subscription_link = $this->getData('subscription_link');
 $button = $this->getData('button');
 $button_text = $this->getData('button_text');
 $button_link = $this->getData('button_link');
+$cmsblock_yesno = $this->getData('cmsblock_yesno');
 $cmsblock = $this->getData('cmsblock');
 $help = $this->getData('help');
 $phone = $this->getData('phone');
@@ -25,55 +23,54 @@ $chat = $this->getData('chat');
 $skype = $this->getData('skype');
 $whatsapp = $this->getData('whatsapp');
 $template = $this->getData('template');
+$columnCount = 0;
 
-echo $trigger.'<br>';
-echo $exitintent_delay.'<br>';
-echo $inactivity_delay.'<br>';
-echo $scrolldepth.'<br>';
-echo $timeonpage.'<br>';
-echo $title.'<br>';
-echo $message.'<br>';
-echo $coupon.'<br>';
-echo $coupon_code.'<br>';
-echo 'Subscription: '.$subscription.'<br>';
-echo 'subscription_provider: '.$subscription_provider.'<br>';
-echo $subscription_link.'<br>';
-echo $button.'<br>';
-echo $button_text.'<br>';
-echo $button_link.'<br>';
-echo $cmsblock.'<br>';
-echo $help.'<br>';
-echo $phone.'<br>';
-echo $email.'<br>';
-echo $chat.'<br>';
-echo $skype.'<br>';
-echo $whatsapp.'<br>';
-echo $template.'<br>';
+if($email) {
+    $columnCount++;
+}
+if($chat) {
+    $columnCount++;
+}
+if($skype) {
+    $columnCount++;
+}
 
 if($trigger=="exitintent") {
-    $triggerdata = "popup-trigger=\"".$trigger."\"";
-    $parameters = "popup-time=\"".$exitintent_delay."\"";
+    $triggerdata = "trigger=\"".$trigger."\"";
+    $parameters = "exitintent_delay=\"".$exitintent_delay."\"";
 
 }
 if($trigger=="scrolldepth") {
-    $triggerdata = "popup-trigger=\"".$trigger."\"";
-    $parameters = "popup-scrolldepth=\"".$scrolldepth."\"";
+    $triggerdata = "trigger=\"".$trigger."\"";
+    $parameters = "scrolldepth=\"".$scrolldepth."\"";
 }
 if($trigger=="inactivity") {
-    $triggerdata = "popup-trigger=\"".$trigger."\"";
-    $parameters = "popup-time=\"".$inactivity_delay."\"";
+    $triggerdata = "trigger=\"".$trigger."\"";
+    $parameters = "inactivity_delay=\"".$inactivity_delay."\"";
 }
 if($trigger=="timeonpage") {
-    $triggerdata = "popup-trigger=\"".$trigger."\"";
-    $parameters = "popup-time=\"".$timeonpage."\"";
+    $triggerdata = "trigger=\"".$trigger."\"";
+    $parameters = "timeonpage=\"".$timeonpage."\"";
 }
 ?>
-
+<!-- Test Data -->
 <button id="myBtn">Open Modal</button>
+<button id="deletecookie">Delete Cookie</button>
+<script>
+    /* Development Stuff */
+    jQuery(document).ready( function($){
+        console.log(Cookies.get('popup'));
+
+        $('#deletecookie').click( function() {
+            Cookies.remove('popup');
+        });
+    });
+</script>
+<!-- Test Data -->
 <div id="shadowbox" class="shadowbox" <?php echo $triggerdata.' '.$parameters ?> >
     <div id="magepopup" class="magepopup <?php echo $trigger ?>">
         <span id="close" class="close">X</span>
-        <?php if($cmsblock) : ?>
+        <?php if($cmsblock_yesno) : ?>
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($cmsblock)->toHtml() ?>
         <?php else : ?>
             <?php if($title) : ?> <div class="title"><?php echo $title ?></div> <?php endif; ?>
@@ -91,7 +88,6 @@ if($trigger=="timeonpage") {
                                     <button type="submit" class="button"><?php echo $this->__('Subscribe') ?> </button>
                                 </div>
                             </div>
-
                         </form>
                     <?php endif; ?>
                 </div>
@@ -100,125 +96,19 @@ if($trigger=="timeonpage") {
                 <a class="button popupbutton" href="<?php echo $button_link ?>"><?php echo $button_text ?></a>
             <?php endif; ?>
             <?php if($help) : ?>
-                <dl class="phone">
-                    <dt><?php echo $this->__('Call us: ') ?></dt>
-                    <dd><a href="tel:<?php echo preg_replace("/^0/", "+49" ,$phone ); ?>"><?php echo $phone ?></a></dd>
-                </dl>
-                <ul class="help-col">
-                    <li><a class="button" href="<?php echo $email ?>"><?php echo $this->__('E-Mail') ?></a></li>
-                    <li><a class="button" href="<?php echo $chat ?>">Chat</a></li>
-                    <li><a class="button" href="skype:<?php echo $skype; ?>?call" onclick="Skype.tryAnalyzeSkypeUri('call', '0');"><?php echo $this->__('Skype') ?></a></li>
+                <?php if($phone) : ?>
+                    <dl class="phone">
+                        <dt><?php echo $this->__('Call us: ') ?></dt>
+                        <dd><a href="tel:<?php echo preg_replace("/^0/", "+49" ,$phone ); ?>"><?php echo $phone ?></a></dd>
+                    </dl>
+                <?php endif; ?>
+                <ul class="help-col col-<?php echo $columnCount; ?>">
+                    <?php if($email): ?><li><a class="button" href="<?php echo $email ?>"><?php echo $this->__('E-Mail') ?></a></li><?php endif; ?>
+                    <?php if($chat): ?><li><a class="button" href="<?php echo $chat ?>">Chat</a></li><?php endif; ?>
+                    <?php if($skype): ?><li><a class="button" href="skype:<?php echo $skype; ?>?call" onclick="Skype.tryAnalyzeSkypeUri('call', '0');"><?php echo $this->__('Skype') ?></a></li><?php endif; ?>
                 </ul>
                 <div class="clearfix"></div>
             <?php endif; ?>
         <?php endif; ?>
     </div>
 </div>
-
-<button id="deletecookie">Delete Cookie</button>
-<script>
-    /* Development Stuff */
-    jQuery(document).ready( function($){
-        console.log(Cookies.get('popup'));
-
-        $('#deletecookie').click( function() {
-            Cookies.remove('popup');
-        });
-    });
-
-
-</script>
-<?php if($trigger=="exitintent") : ?>
-<script>
-    jQuery( document ).ready(function($) {
-        var cookie = Cookies.get('popup')
-        var opened = 0;
-        if(!cookie) {
-                $( document ).on( "mousemove", function( event ) {
-                    if(event.pageY < 10 && opened==0) {
-                        setTimeout(function() {
-                            $('#shadowbox').fadeIn();
-                        },<?php echo $exitintent_delay ?>);
-                        opened = 1;
-                        console.log(opened);
-                    }
-            });
-        }
-        $('#close').click(function(){
-            Cookies.set('popup', 'closed' , {expires:7});
-        });
-    });
-</script>
-<?php endif; ?>
-<?php if($trigger=='scrolldepth') : ?>
-    <script>
-        jQuery( document ).ready(function($) {
-            var height = $(document).height()-$(window).height();
-            var scrolldepth = 0;
-            var toTop = 0;
-            var opened = 0;
-            var cookie = Cookies.get('popup')
-            $(window).scroll(function(event) {
-                toTop = $(window).scrollTop();
-                scrolldepth = toTop/height;
-                console.log(scrolldepth);
-                if(scrolldepth ><?php echo $scrolldepth/100 ?> && opened==0) {
-                    if(!cookie) {
-                        $('#shadowbox').fadeIn();
-                        opened = 1
-                    }
-                }
-            });
-            $('#close').click(function(){
-                Cookies.set('popup', 'closed' , {expires:7});
-            });
-        });
-    </script>
-<?php endif; ?>
-
-<?php if($trigger=="inactivity") : ?>
-    <script type="text/javascript">
-        jQuery(document).ready(function($){
-            var cookie = Cookies.get('popup');
-            idleTime = 0;
-            var opened = 0;
-            var idleInterval = setInterval(timerIncrement, 1000);
-            function timerIncrement()
-            {
-                idleTime++;
-                if (idleTime > <?php echo $inactivity_delay ?>)
-                {
-                    if(!cookie && opened==0) {
-                        $('#shadowbox').fadeIn();
-                        opened=1;
-                    }
-                }
-            }
-            $(this).mousemove(function(e){
-                idleTime = 0;
-            });
-            $('#close').click(function(){
-                Cookies.set('popup', 'closed' , {expires:7});
-            });
-        })
-    </script>
-<?php endif; ?>
-<?php if($trigger=="timeonpage") : ?>
-<script>
-    jQuery(document).ready(function($){
-        //Cookies.remove('popup');
-        var cookie = Cookies.get('popup');
-        function showbox(){
-            $('#shadowbox').fadeIn();
-        }
-        var timeout = <?php echo $timeonpage ?>*1000;
-
-        if(!cookie) {
-            setTimeout(showbox, timeout);
-        }
-        $('#close').click(function(){
-            Cookies.set('popup', 'closed' , {expires:7});
-        });
-    })
-</script>
-<?php endif; ?>

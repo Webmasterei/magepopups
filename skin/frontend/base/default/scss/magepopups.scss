@@ -131,6 +131,7 @@ $border-radius:5px;
    }
   }
 
+
 }
 
 @media #{$medium-up} {
@@ -146,13 +147,12 @@ $border-radius:5px;
       }
     }
     .help-col {
-      li {
-        float:left;
-        width: 33%;
-      }
+      li {float:left;}
+      &.col-1 li {width:100%;}
+      &.col-2  li {width:50%;}
+      &.col-3 li {width:33%;}
     }
-  }
-
+    }
 }
 
 /* Add Animation */
