@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <webmasterei translate="label" module="magepopups">
+            <label>webmasterei Extensions</label>
+            <sort_order>100</sort_order>
+        </webmasterei>
+    </tabs>
+    <sections>
+        <magepopups translate="label" module="magepopups">
+            <label>Magepopups</label>
+            <tab>webmasterei</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <magepopups_blocks translate="label" module="magepopups">
+                    <label>Style Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <border_color translate="label">
+                            <label>Border Color:</label>
+                            <comment>Give a HTML color value (border, button)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </border_color>
+                        <button_color translate="label">
+                            <label>Button Color:</label>
+                            <comment>Give a HTML color value</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_color>
+                        <button_hover_color translate="label">
+                            <label>Button hover color:</label>
+                            <comment>Give a HTML color value</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_hover_color>
+                        <button_font_color translate="label">
+                            <label>Button font color:</label>
+                            <comment>Give a HTML color value.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_font_color>
+                    </fields>
+                </magepopups_blocks>
+            </groups>
+        </magepopups>
+    </sections>
+</config>

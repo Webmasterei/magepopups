@@ -6,7 +6,7 @@
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
-  z-index: 1;
+  z-index: 1000;
   /* Sit on top */
   left: 0;
   top: 0;
@@ -18,7 +18,7 @@
   /* Enable scroll if needed */
   background-color: black;
   /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   /* Black w/ opacity */ }
 
 .magepopup {
@@ -26,7 +26,7 @@
   margin: 15% auto;
   /* 15% from the top and centered */
   padding: 20px;
-  border: 5px solid #ecd05a;
+  border: 5px solid;
   width: 95%;
   /* Could be more or less, depending on screen size */
   position: relative;
@@ -35,12 +35,11 @@
   animation-name: animatetop;
   animation-duration: 0.4s;
   text-align: center; }
-  .magepopup a, .magepopup a:hover, .magepopup a:focus, .magepopup a:visited {
-    color: #ecd05a; }
   .magepopup .title {
     font-size: 2rem; }
   .magepopup .message {
-    font-weight: normal; }
+    font-weight: normal;
+    margin-bottom: 1rem; }
   .magepopup .coupon {
     display: table;
     width: 100%; }
@@ -55,8 +54,6 @@
   .magepopup .button {
     margin-left: 1rem;
     font-size: 1.5rem;
-    color: #FFFFFF;
-    background-color: #ecd05a;
     border-radius: 5px;
     padding: 0.3rem 1rem;
     border: 1px;

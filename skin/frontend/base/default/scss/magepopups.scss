@@ -51,20 +51,20 @@ $border-radius:5px;
 .shadowbox {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 1000; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
 }
 .magepopup {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 5px solid $brand-primary;
+  border: 5px solid;
   width: 95%; /* Could be more or less, depending on screen size */
   position:relative;
   -webkit-animation-name: animatetop;
@@ -73,13 +73,14 @@ $border-radius:5px;
   animation-duration: 0.4s;
   text-align:center;
   a, a:hover, a:focus, a:visited {
-    color: $brand-primary;
+  //  color: $brand-primary;
   }
   .title {
     font-size: $font-size-large;
   }
   .message {
     font-weight:normal;
+    margin-bottom: 1rem;
   }
   .coupon {
     display: table;
@@ -101,8 +102,8 @@ $border-radius:5px;
   .button {
     margin-left: 1rem;
     font-size: $font-size-medium;
-    color: $brand-font-color;
-    background-color: $brand-primary;
+   // color: $brand-font-color;
+    //background-color: $brand-primary;
     border-radius: $border-radius;
     padding: 0.3rem 1rem;
     border:1px;

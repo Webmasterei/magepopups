@@ -23,8 +23,15 @@ $chat = $this->getData('chat');
 $skype = $this->getData('skype');
 $whatsapp = $this->getData('whatsapp');
 $template = $this->getData('template');
-$columnCount = 0;
+$border_color = Mage::getStoreConfig('magepopups/magepopups_blocks/border_color',Mage::app()->getStore());
+if(!$border_color) {
+    $border_color = "#3399cc";
+}
+$button_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_color',Mage::app()->getStore());
+$button_hover_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_hover_color',Mage::app()->getStore());
+$button_font_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_font_color',Mage::app()->getStore());
 
+$columnCount =0;
 if($email) {
     $columnCount++;
 }
@@ -53,20 +60,19 @@ if($trigger=="timeonpage") {
     $parameters = "timeonpage=\"".$timeonpage."\"";
 }
 ?>
-<!-- Test Data -->
-<button id="myBtn">Open Modal</button>
-<button id="deletecookie">Delete Cookie</button>
-<script>
-    /* Development Stuff */
-    jQuery(document).ready( function($){
-        console.log(Cookies.get('popup'));
-
-        $('#deletecookie').click( function() {
-            Cookies.remove('popup');
-        });
-    });
-</script>
-<!-- Test Data -->
+<button id="deletecookie">delete cookies</button>
+<style>
+    .magepopup {
+        <?php if($border_color) : ?> border-color: <?php echo $border_color; ?> <?php endif; ?>
+    }
+    .magepopup .button {
+       <?php if($button_color) : ?> background-color:<?php echo $button_color; ?>; <?php endif; ?>
+    <?php if($button_font_color) : ?> color: <?php echo $button_font_color; ?>;<?php endif; ?>
+    }
+    .magepopup .button:hover {
+        <?php if($button_hover_color) : ?> background-color: <?php echo $button_hover_color; ?>;<?php endif; ?>
+    }
+</style>
 <div id="shadowbox" class="shadowbox" <?php echo $triggerdata.' '.$parameters ?> >
     <div id="magepopup" class="magepopup <?php echo $trigger ?>">
         <span id="close" class="close">X</span>
