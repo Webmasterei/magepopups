@@ -33,8 +33,25 @@ jQuery(document).ready(function ($) {
     var scrolldepth_value =parseInt( $('#shadowbox').attr('scrolldepth'))
     var inactivity_delay = $('#shadowbox').attr('inactivity_delay')
     var timeonpage = $('#shadowbox').attr('timeonpage')
+    var urlparameter = $('#shadowbox').attr('parameter')
     var cookie = Cookies.get('popup')
     var opened = 0;
+
+    function getUrlParameter(sParam)
+    {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++)
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam)
+            {
+                return sParameterName[1];
+            }
+        }
+    }
+    var popup_parameter = getUrlParameter('popup');
+
 
     if(!cookie && trigger=="exitintent") {
         $(document).on('mouseleave', leaveFromTop);
@@ -89,6 +106,9 @@ jQuery(document).ready(function ($) {
         if (!cookie) {
             setTimeout(showbox, timeout);
         }
+    }
+    if(trigger=="urlparameter" && popup_parameter==urlparameter) {
+            $('#shadowbox').fadeIn();
     }
     $('#close').click(function(){
         $('#shadowbox').fadeOut();

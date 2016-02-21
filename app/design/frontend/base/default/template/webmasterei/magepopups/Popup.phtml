@@ -4,6 +4,7 @@ $exitintent_delay = $this->getData('exitintent_delay');
 $inactivity_delay = $this->getData('inactivity_delay');
 $scrolldepth = $this->getData('scrolldepth');
 $timeonpage = $this->getData('timeonpage');
+$urlparameter = $this->getData('url_parameter');
 $title = $this->getData('title');
 $message = $this->getData('message');
 $coupon = $this->getData('coupon');
@@ -58,6 +59,10 @@ if($trigger=="inactivity") {
 if($trigger=="timeonpage") {
     $triggerdata = "trigger=\"".$trigger."\"";
     $parameters = "timeonpage=\"".$timeonpage."\"";
+}
+if($trigger=="urlparameter") {
+    $triggerdata = "trigger=\"".$trigger."\"";
+    $parameters = "parameter=\"".$urlparameter."\"";
 }
 ?>
 <button id="deletecookie">delete cookies</button>

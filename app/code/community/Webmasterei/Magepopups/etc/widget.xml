@@ -27,8 +27,25 @@
                         <value>timeonpage</value>
                         <label>Time of Pagevisit</label>
                     </timeonpage>
+                    <urlparameter>
+                        <value>urlparameter</value>
+                        <label>URL Parameter</label>
+                    </urlparameter>
                 </values>
             </trigger>
+            <url_parameter>
+                <label>URL Parameter to use</label>
+                <description>URL Parameter will be "?popup=myurlparameter"</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>myurlparameter</value>
+                <depends>
+                    <trigger>
+                        <value>urlparameter</value>
+                    </trigger>
+                </depends>
+            </url_parameter>
             <exitintent_delay>
                 <label>Exit intent delay</label>
                 <description>Set the Delay Time for exit intent in Millisecons</description>
