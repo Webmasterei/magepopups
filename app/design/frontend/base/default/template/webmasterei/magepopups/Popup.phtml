@@ -85,7 +85,9 @@ if($trigger=="urlparameter") {
         <?php else : ?>
             <?php if($title) : ?> <div class="title"><?php echo $title ?></div> <?php endif; ?>
             <?php if($message) : ?> <div class="message"><?php echo $message ?></div> <?php endif; ?>
-            <?php if($coupon) : ?> <div class="coupon"><input value="<?php echo $coupon_code ?>" readonly><button class="button emailcopybtn">Copy</button></div> <?php endif; ?>
+            <?php if($coupon) : ?> <div class="coupon">
+                <label for="coupon-code"><?php echo $this->__('Coupon: ') ?></label>
+                <input name="coupon-code" value="<?php echo $coupon_code ?>" readonly><button class="button emailcopybtn"><?php echo $this->__('Copy'); ?></button></div> <?php endif; ?>
             <?php if($subscription) : ?>
                 <div class="newsletter">
                     <?php if($subscription_provider=="magento") : ?>
