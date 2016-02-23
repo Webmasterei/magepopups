@@ -64,7 +64,16 @@ if($trigger=="urlparameter") {
     $triggerdata = "trigger=\"".$trigger."\"";
     $parameters = "parameter=\"".$urlparameter."\"";
 }
+
+$widgetId =  preg_replace('/\s+/', '', 'shadowbox'.$trigger);
+
 ?>
+<script>
+    jQuery(document).ready(function($){
+        $().magepopups('<?php echo $widgetId; ?>');
+    })
+</script>
+<div id="myDivId" value="100"></div>
 <style>
     .magepopup {
         <?php if($border_color) : ?> border-color: <?php echo $border_color; ?> <?php endif; ?>
@@ -77,7 +86,7 @@ if($trigger=="urlparameter") {
         <?php if($button_hover_color) : ?> background-color: <?php echo $button_hover_color; ?>;<?php endif; ?>
     }
 </style>
-<div id="shadowbox" class="shadowbox" <?php echo $triggerdata.' '.$parameters ?> >
+<div id="<?php echo $widgetId ?>" class="shadowbox" <?php echo $triggerdata.' '.$parameters ?> >
     <div id="magepopup" class="magepopup <?php echo $trigger ?>">
         <span id="close" class="close">X</span>
         <?php if($cmsblock_yesno) : ?>
