@@ -14,11 +14,10 @@ jQuery(document).ready(function ($) {
         $('.newsletter button').click(function () {
             Cookies.set('popup','submitted');
         })
-        var modal = document.getElementById("#"+widgetId);
 
         $(window).click( function(event) {
-            if (event.target ==  modal) {
-                $(modal).fadeOut();
+            if (event.target.id ==  widgetId) {
+                $("#"+widgetId).fadeOut();
             }
         });
         var copyEmailBtn = document.querySelector('.emailcopybtn');
@@ -96,7 +95,6 @@ jQuery(document).ready(function ($) {
                     }
                 }
             }
-
             $(this).mousemove(function (e) {
                 idleTime = 0;
             });
@@ -111,7 +109,9 @@ jQuery(document).ready(function ($) {
             }
         }
         if(trigger=="urlparameter" && popup_parameter==urlparameter) {
-            $("#"+widgetId).fadeIn();
+            setTimeout(function() {
+                    $("#"+widgetId).fadeIn();
+            },1000);
         }
         $('#close').click(function(){
             $("#"+widgetId).fadeOut();
