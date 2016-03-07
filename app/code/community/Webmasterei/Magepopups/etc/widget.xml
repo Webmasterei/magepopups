@@ -31,6 +31,18 @@
                         <value>urlparameter</value>
                         <label>URL Parameter</label>
                     </urlparameter>
+                    <visited_n_pages>
+                        <value>visited_n_pages</value>
+                        <label>User visited X Pages</label>
+                    </visited_n_pages>
+                    <timeondomain>
+                        <value>timeondomain</value>
+                        <label>Time on Website</label>
+                    </timeondomain>
+                    <cart_product_attribute>
+                        <value>cart_product_attribute</value>
+                        <label>Product with a certain attribute in cart.</label>
+                    </cart_product_attribute>
                 </values>
             </trigger>
             <url_parameter>
@@ -114,6 +126,55 @@
                     </trigger>
                 </depends>
             </timeonpage>
+            <visited_n_pages>
+                <label>Number of Pages</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <value>20</value>
+                <depends>
+                    <trigger>
+                        <value>visited_n_pages</value>
+                    </trigger>
+                </depends>
+            </visited_n_pages>
+            <timeondomain>
+                <label>Time on Domain</label>
+                <description>Set a time Value in seconds i.e. "20" for 20 seconds.</description>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <value>20</value>
+                <depends>
+                    <trigger>
+                        <value>timeondomain</value>
+                    </trigger>
+                </depends>
+            </timeondomain>
+            <cart_product_attribute>
+                <label>Product has a certain attribute</label>
+                <description>Set the attribute code here (i.e. "manufacturer")</description>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <depends>
+                    <trigger>
+                        <value>cart_product_attribute</value>
+                    </trigger>
+                </depends>
+            </cart_product_attribute>
+            <cart_product_attribute_value>
+                <label>Attribute value of the product</label>
+                <description>Set the attribute value in the store language. (i.e. "Magento")</description>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <depends>
+                    <trigger>
+                        <value>cart_product_attribute</value>
+                    </trigger>
+                </depends>
+            </cart_product_attribute_value>
             <title>
                 <label>Titel</label>
                 <visible>1</visible>

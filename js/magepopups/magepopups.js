@@ -1,18 +1,49 @@
+// Set the inital cookie
+
+//Set Expire Time of the cookie
+
+var daysToExpire = 30;
+var firstVisitDate = new Date();
+firstVisitDate = firstVisitDate.getTime();
+if(!Cookies.get('magepopup')) {
+    Cookies.set('magepopup', {
+        first_visit_date: firstVisitDate,
+        pages_visited: 0,
+        closed_popup: 0,
+        } , {
+        expires: daysToExpire,
+        domain: window.location.host
+    });
+}
+// Get the cookie into variable
+var cookie = Cookies.get('magepopup');
+cookie = JSON.parse(cookie);
+//Pages visited counter
+pagesVisited = cookie.pages_visited;
+pagesVisited++;
+cookie.pages_visited = pagesVisited;
+Cookies.set('magepopup', cookie)
+
 jQuery(document).ready(function ($) {
 // Set cookie to not call Popup after subscription
     $.fn.magepopups = function(widgetId) {
-
         var trigger = $("#"+widgetId).attr('trigger');
         var exitintent_delay = $("#"+widgetId).attr('exitintent_delay');
         var scrolldepth_value = parseInt( $("#"+widgetId).attr('scrolldepth'));
         var inactivity_delay = $("#"+widgetId).attr('inactivity_delay');
         var timeonpage = $("#"+widgetId).attr('timeonpage');
         var urlparameter = $("#"+widgetId).attr('parameter');
-        var cookie = Cookies.get('popup');
+        var parameter = $("#"+widgetId).attr('parameter');
+        var cookie = Cookies.get('magepopup');
+        cookie = JSON.parse(cookie);
+        closedPopup = cookie.closed_popup;
+        pagesVisited = cookie.pages_visited;
+        first_visit_date = cookie.first_visit_date;
+
         var opened = 0;
 
         $('.newsletter button').click(function () {
-            Cookies.set('popup','submitted');
+        //    Cookies.set('popup','submitted');
         })
 
         $(window).click( function(event) {
@@ -38,7 +69,6 @@ jQuery(document).ready(function ($) {
             });
         }
 
-
         function getUrlParameter(sParam)
         {
             var sPageURL = window.location.search.substring(1);
@@ -54,8 +84,7 @@ jQuery(document).ready(function ($) {
         }
         var popup_parameter = getUrlParameter('popup');
 
-
-        if(!cookie && trigger=="exitintent") {
+        if(closedPopup==0 && trigger=="exitintent") {
             $(document).on('mouseleave', leaveFromTop);
             function leaveFromTop(e){
                 if( e.clientY < 60 && opened==0) {
@@ -66,30 +95,28 @@ jQuery(document).ready(function ($) {
                 }
             }
         }
-        if(!cookie && trigger=="scrolldepth") {
+
+        if(!closedPopup && trigger=="scrolldepth") {
             var height = $(document).height()-$(window).height();
             var scrolldepth = 0;
             var toTop = 0;
-            var cookie = Cookies.get('popup')
             $(window).scroll(function(event) {
                 toTop = $(window).scrollTop();
                 scrolldepth = Math.round((toTop/height)*100);
                 if(scrolldepth >= scrolldepth_value && opened==0) {
-                    if(!cookie) {
                         $("#"+widgetId).fadeIn();
                         opened = 1
-                    }
                 }
             });
         }
-        if(!cookie && trigger=="inactivity") {
+        if(!closedPopup && trigger=="inactivity") {
             idleTime = 0;
             var idleInterval = setInterval(timerIncrement, 1000);
 
             function timerIncrement() {
                 idleTime++;
                 if (idleTime > inactivity_delay) {
-                    if (!cookie && opened == 0) {
+                    if (!opened) {
                         $("#"+widgetId).fadeIn();
                         opened = 1;
                     }
@@ -99,28 +126,46 @@ jQuery(document).ready(function ($) {
                 idleTime = 0;
             });
         }
-        if(!cookie && trigger=="timeonpage") {
+        if(!closedPopup && trigger=="timeonpage") {
             function showbox() {
                 $("#"+widgetId).fadeIn();
             }
             var timeout = timeonpage * 1000;
-            if (!cookie) {
-                setTimeout(showbox, timeout);
-            }
+            setTimeout(showbox, timeout);
+        }
+        if(!closedPopup && trigger=="timeondomain" ) {
+            setInterval(function(){
+                    var now = new Date();
+                    now = now.getTime();
+                    timeondomain = Math.round((now-first_visit_date)/1000);
+                    if(timeondomain==parameter) {
+                        $("#"+widgetId).fadeIn();
+                    }
+                },1000)
+        }
+        if(!closedPopup && trigger=="cart_product_attribute" && parameter==1) {
+            $("#"+widgetId).fadeIn();
         }
         if(trigger=="urlparameter" && popup_parameter==urlparameter) {
             setTimeout(function() {
                     $("#"+widgetId).fadeIn();
             },1000);
         }
+        // N Pages visited
+        if(!closedPopup && trigger=="visited_n_pages" && pagesVisited == parameter) {
+            $("#"+widgetId).fadeIn();
+        }
         $('#close').click(function(){
             $("#"+widgetId).fadeOut();
-            Cookies.set('popup', 'closed' , {expires:7});
+            cookie.closed_popup = 1;
+            Cookies.set('magepopup', cookie);
         });
         $('#deletecookie').click( function() {
-            Cookies.remove('popup');
+            Cookies.remove('magepopup');
         });
     }
+
 });
 
+console.log(Cookies.get('magepopup'))
 

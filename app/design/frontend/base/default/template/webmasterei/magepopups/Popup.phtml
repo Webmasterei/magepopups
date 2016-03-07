@@ -5,6 +5,10 @@ $inactivity_delay = $this->getData('inactivity_delay');
 $scrolldepth = $this->getData('scrolldepth');
 $timeonpage = $this->getData('timeonpage');
 $urlparameter = $this->getData('url_parameter');
+$visited_n_pages = $this->getData('visited_n_pages');
+$timeondomain = $this->getData('timeondomain');
+$cart_product_attribute = $this->getData('cart_product_attribute');
+$cart_product_attribute_value = $this->getData('cart_product_attribute_value');
 $title = $this->getData('title');
 $message = $this->getData('message');
 $coupon = $this->getData('coupon');
@@ -63,6 +67,38 @@ if($trigger=="timeonpage") {
 if($trigger=="urlparameter") {
     $triggerdata = "trigger=\"".$trigger."\"";
     $parameters = "parameter=\"".$urlparameter."\"";
+}
+if($trigger=="visited_n_pages") {
+    $triggerdata = "trigger=\"".$trigger."\"";
+    $parameters = "parameter=\"".$visited_n_pages."\"";
+}
+if($trigger=="timeondomain") {
+    $triggerdata = "trigger=\"".$trigger."\"";
+    $parameters = "parameter=\"".$timeondomain."\"";
+}
+if($trigger=="cart_product_attribute") {
+    $parameter = 0;
+
+
+    $cart = Mage::getModel('checkout/cart')->getQuote();
+    foreach ($cart->getAllItems() as $item) {
+        // Get Product model attribute ID
+        $productModel = Mage::getModel('catalog/product');
+        $attr = $productModel->getResource()->getAttribute($cart_product_attribute);
+        if ($attr->usesSource()) {
+            $attr_id = $attr->getSource()->getOptionId($cart_product_attribute_value);
+        }
+        // Get Attribute ID from the specific product
+        $product = $item->getProduct();
+        $productId = $product->getId();
+        $optionValue = Mage::getSingleton('catalog/product')->getResource()->getAttributeRawValue($productId,  $cart_product_attribute, Mage::app()->getStore());
+        if($optionValue==$attr_id) {
+            $parameter = 1;
+            break;
+        }
+    }
+    $triggerdata = "trigger=\"".$trigger."\"";
+    $parameters = "parameter=\"".$parameter."\"";
 }
 
 $widgetId =  preg_replace('/\s+/', '', 'shadowbox'.$trigger);
