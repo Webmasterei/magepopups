@@ -155,12 +155,18 @@ jQuery(document).ready(function ($) {
         if(!closedPopup && trigger=="visited_n_pages" && pagesVisited == parameter) {
             $("#"+widgetId).fadeIn();
         }
+
         $('#close').click(function(){
             $("#"+widgetId).fadeOut();
             $("#hide-box-"+widgetId).fadeIn();
             cookie.closed_popup = 1;
             Cookies.set('magepopup', cookie);
         });
+        $(".shadowbox").click(function(){
+            $("#"+widgetId).fadeOut();
+            $("#hide-box-"+widgetId).fadeIn();
+            cookie.closed_popup = 1;
+            Cookies.set('magepopup', cookie);        });
         $("#hide-box-"+widgetId).click(function(){
             $("#"+widgetId).fadeIn();
         });
