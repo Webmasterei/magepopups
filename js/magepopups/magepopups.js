@@ -1,7 +1,6 @@
 // Set the inital cookie
 
 //Set Expire Time of the cookie
-
 var daysToExpire = 30;
 var firstVisitDate = new Date();
 firstVisitDate = firstVisitDate.getTime();
@@ -12,9 +11,11 @@ if(!Cookies.get('magepopup')) {
         closed_popup: 0,
         } , {
         expires: daysToExpire,
-        domain: window.location.host
+        domain: document.location.hostname,
+        path: "/"
     });
 }
+console.log(Mage.Cookies.domain);
 // Get the cookie into variable
 var cookie = Cookies.get('magepopup');
 cookie = JSON.parse(cookie);
@@ -166,7 +167,8 @@ jQuery(document).ready(function ($) {
             $("#"+widgetId).fadeOut();
             $("#hide-box-"+widgetId).fadeIn();
             cookie.closed_popup = 1;
-            Cookies.set('magepopup', cookie);        });
+            Cookies.set('magepopup', cookie);
+        });
         $("#hide-box-"+widgetId).click(function(){
             $("#"+widgetId).fadeIn();
         });
