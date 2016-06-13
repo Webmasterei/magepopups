@@ -28,55 +28,59 @@ $chat = $this->getData('chat');
 $skype = $this->getData('skype');
 $whatsapp = $this->getData('whatsapp');
 $template = $this->getData('template');
-$font_color = Mage::getStoreConfig('magepopups/magepopups_blocks/font_color',Mage::app()->getStore());
-$border_color = Mage::getStoreConfig('magepopups/magepopups_blocks/border_color',Mage::app()->getStore());
-$title_background_color = Mage::getStoreConfig('magepopups/magepopups_blocks/title_background_color',Mage::app()->getStore());
-$button_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_color',Mage::app()->getStore());
-$button_hover_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_hover_color',Mage::app()->getStore());
-$button_font_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_font_color',Mage::app()->getStore());
+$font_color = Mage::getStoreConfig('magepopups/magepopups_blocks/font_color', Mage::app()->getStore());
+$border_color = Mage::getStoreConfig('magepopups/magepopups_blocks/border_color', Mage::app()->getStore());
+$title_background_color = Mage::getStoreConfig('magepopups/magepopups_blocks/title_background_color', Mage::app()->getStore());
+$button_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_color', Mage::app()->getStore());
+$button_hover_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_hover_color', Mage::app()->getStore());
+$button_font_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_font_color', Mage::app()->getStore());
 $background_image = Mage::getUrl('media/magepopups') . Mage::getStoreConfig('magepopups/magepopups_blocks/background_image');;
+$background_color = Mage::getStoreConfig('magepopups/magepopups_blocks/background_color');;
+### HIDE BOX  ###
+$hide_box = $this->getData('hide_box');
+$hide_box_image = Mage::getUrl('media/magepopups') . Mage::getStoreConfig('magepopups/magepopups_blocks/hide_box_image');;
 
-$columnCount =0;
-if($email) {
+$columnCount = 0;
+if ($email) {
     $columnCount++;
 }
-if($chat) {
+if ($chat) {
     $columnCount++;
 }
-if($skype) {
+if ($skype) {
     $columnCount++;
 }
 
-if($trigger=="exitintent") {
-    $triggerdata = "trigger=\"".$trigger."\"";
-    $parameters = "exitintent_delay=\"".$exitintent_delay."\"";
+if ($trigger == "exitintent") {
+    $triggerdata = "trigger=\"" . $trigger . "\"";
+    $parameters = "exitintent_delay=\"" . $exitintent_delay . "\"";
 
 }
-if($trigger=="scrolldepth") {
-    $triggerdata = "trigger=\"".$trigger."\"";
-    $parameters = "scrolldepth=\"".$scrolldepth."\"";
+if ($trigger == "scrolldepth") {
+    $triggerdata = "trigger=\"" . $trigger . "\"";
+    $parameters = "scrolldepth=\"" . $scrolldepth . "\"";
 }
-if($trigger=="inactivity") {
-    $triggerdata = "trigger=\"".$trigger."\"";
-    $parameters = "inactivity_delay=\"".$inactivity_delay."\"";
+if ($trigger == "inactivity") {
+    $triggerdata = "trigger=\"" . $trigger . "\"";
+    $parameters = "inactivity_delay=\"" . $inactivity_delay . "\"";
 }
-if($trigger=="timeonpage") {
-    $triggerdata = "trigger=\"".$trigger."\"";
-    $parameters = "timeonpage=\"".$timeonpage."\"";
+if ($trigger == "timeonpage") {
+    $triggerdata = "trigger=\"" . $trigger . "\"";
+    $parameters = "timeonpage=\"" . $timeonpage . "\"";
 }
-if($trigger=="urlparameter") {
-    $triggerdata = "trigger=\"".$trigger."\"";
-    $parameters = "parameter=\"".$urlparameter."\"";
+if ($trigger == "urlparameter") {
+    $triggerdata = "trigger=\"" . $trigger . "\"";
+    $parameters = "parameter=\"" . $urlparameter . "\"";
 }
-if($trigger=="visited_n_pages") {
-    $triggerdata = "trigger=\"".$trigger."\"";
-    $parameters = "parameter=\"".$visited_n_pages."\"";
+if ($trigger == "visited_n_pages") {
+    $triggerdata = "trigger=\"" . $trigger . "\"";
+    $parameters = "parameter=\"" . $visited_n_pages . "\"";
 }
-if($trigger=="timeondomain") {
-    $triggerdata = "trigger=\"".$trigger."\"";
-    $parameters = "parameter=\"".$timeondomain."\"";
+if ($trigger == "timeondomain") {
+    $triggerdata = "trigger=\"" . $trigger . "\"";
+    $parameters = "parameter=\"" . $timeondomain . "\"";
 }
-if($trigger=="cart_product_attribute") {
+if ($trigger == "cart_product_attribute") {
     $parameter = 0;
 
 
@@ -91,74 +95,87 @@ if($trigger=="cart_product_attribute") {
         // Get Attribute ID from the specific product
         $product = $item->getProduct();
         $productId = $product->getId();
-        $optionValue = Mage::getSingleton('catalog/product')->getResource()->getAttributeRawValue($productId,  $cart_product_attribute, Mage::app()->getStore());
-        if($optionValue==$attr_id) {
+        $optionValue = Mage::getSingleton('catalog/product')->getResource()->getAttributeRawValue($productId, $cart_product_attribute, Mage::app()->getStore());
+        if ($optionValue == $attr_id) {
             $parameter = 1;
             break;
         }
     }
-    $triggerdata = "trigger=\"".$trigger."\"";
-    $parameters = "parameter=\"".$parameter."\"";
+    $triggerdata = "trigger=\"" . $trigger . "\"";
+    $parameters = "parameter=\"" . $parameter . "\"";
 }
 
-$widgetId =  preg_replace('/\s+/', '', 'shadowbox'.$trigger);
+$widgetId = preg_replace('/\s+/', '', 'shadowbox' . $trigger);
 
 ?>
 <script>
-    jQuery(document).ready(function($){
+    jQuery(document).ready(function ($) {
         $().magepopups('<?php echo $widgetId; ?>');
     })
 </script>
 <style>
     .magepopup {
-        <?php if($font_color) {
-            echo "color:".$font_color.";";
-        }
-        ?>
-        <?php if($border_color) : ?>
-            border-color: <?php echo $border_color; ?>;
-            border: 5px solid;
-        <?php endif; ?>
-        <?php if($background_image) : ?>
-            background:url('<?php echo $background_image; ?>');
-            background-repeat: no-repeat;
-            background-size: auto 100%;
-        <?php endif; ?>
+    <?php if($font_color) {
+        echo "color:".$font_color.";";
     }
+    ?>
+    <?php if($border_color) : ?> border-color: <?php echo $border_color; ?>;
+        border: 5px solid;
+    <?php endif; ?><?php if($background_image) : ?> background: url('<?php echo $background_image; ?>');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+    <?php endif; ?>
+    }
+
     .magepopup .title {
-        <?php
-        if($title_background_color) { echo "background:$title_background_color;"; }
-        ?>
+    <?php
+    if($title_background_color) { echo "background:$title_background_color;"; }
+    ?>
     }
+
     .magepopup .button {
-       <?php if($button_color) : ?> background-color:<?php echo $button_color; ?>; <?php endif; ?>
-    <?php if($button_font_color) : ?> color: <?php echo $button_font_color; ?>;<?php endif; ?>
+    <?php if($button_color) : ?> background-color: <?php echo $button_color; ?>;
+    <?php endif; ?><?php if($button_font_color) : ?> color: <?php echo $button_font_color; ?>;
+    <?php endif; ?>
     }
+
     .magepopup .button:hover {
-        <?php if($button_hover_color) : ?> background-color: <?php echo $button_hover_color; ?>;<?php endif; ?>
+    <?php if($button_hover_color) : ?> background-color: <?php echo $button_hover_color; ?>;
+    <?php endif; ?>
+    }
+    .hide-box {
+    <?php if($font_color) {   echo "color:".$font_color.";";}?>
+    <?php if($background_color) {echo "background-color:$background_color;";} ?>
     }
 </style>
-<div id="<?php echo $widgetId ?>" class="shadowbox" <?php echo $triggerdata.' '.$parameters ?> >
+<div id="<?php echo $widgetId ?>" class="shadowbox" <?php echo $triggerdata . ' ' . $parameters ?> >
     <div id="magepopup" class="magepopup <?php echo $trigger ?>">
         <span id="close" class="close">X</span>
-        <?php if($cmsblock_yesno) : ?>
+        <?php if ($cmsblock_yesno) : ?>
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($cmsblock)->toHtml() ?>
         <?php else : ?>
-            <?php if($title) : ?> <div class="title"><?php echo $title ?></div> <?php endif; ?>
-            <?php if($coupon) : ?> <div class="coupon">
-                <div class="coupon-title"><?php echo $this->__('Coupon: ') ?></div>
-                <div><input name="coupon-code" value="<?php echo $coupon_code ?>" readonly></div>
-                <div><button class="button emailcopybtn"><?php echo $this->__('Copy'); ?></button></div>
+        <?php if ($title) : ?>
+            <div class="title"><?php echo $title ?></div> <?php endif; ?>
+        <?php if ($coupon) : ?>
+        <div class="coupon">
+            <div class="coupon-title"><?php echo $this->__('Coupon: ') ?></div>
+            <div><input name="coupon-code" value="<?php echo $coupon_code ?>" readonly></div>
+            <div>
+                <button class="button emailcopybtn"><?php echo $this->__('Copy'); ?></button>
+            </div>
             <?php endif; ?>
-            <?php if($subscription) : ?>
+            <?php if ($subscription) : ?>
                 <div class="newsletter">
-                    <?php if($subscription_provider=="magento") : ?>
+                    <?php if ($subscription_provider == "magento") : ?>
                         <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('webmasterei/magepopups/subscribe.phtml')->toHtml(); ?>
-                    <?php elseif($subscription_provider=="cleverreach") : ?>
-                        <form class="layout_form cr_form cr_font" action="<?php echo $subscription_link ?>wcs/" method="post" target="_blank">
+                    <?php elseif ($subscription_provider == "cleverreach") : ?>
+                        <form class="layout_form cr_form cr_font" action="<?php echo $subscription_link ?>wcs/"
+                              method="post" target="_blank">
                             <div class="cr_body cr_page cr_font formbox">
                                 <div class="input-box">
-                                    <label for="" class="itemname">E-Mail*</label> <input name="email" value="" type="text" class="input-text required-entry validate-email" />
+                                    <label for="" class="itemname">E-Mail*</label> <input name="email" value=""
+                                                                                          type="text"
+                                                                                          class="input-text required-entry validate-email"/>
                                     <button type="submit" class="button"><?php echo $this->__('Subscribe') ?> </button>
                                 </div>
                             </div>
@@ -166,24 +183,40 @@ $widgetId =  preg_replace('/\s+/', '', 'shadowbox'.$trigger);
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
-            <?php if($button) : ?>
+            <?php if ($button) : ?>
                 <a class="button popupbutton" href="<?php echo $button_link ?>"><?php echo $button_text ?></a>
             <?php endif; ?>
-            <?php if($help) : ?>
-                <?php if($phone) : ?>
+            <?php if ($help) : ?>
+                <?php if ($phone) : ?>
                     <dl class="phone">
                         <dt><?php echo $this->__('Call us: ') ?></dt>
-                        <dd><a href="tel:<?php echo preg_replace("/^0/", "+49" ,$phone ); ?>"><?php echo $phone ?></a></dd>
+                        <dd><a href="tel:<?php echo preg_replace("/^0/", "+49", $phone); ?>"><?php echo $phone ?></a>
+                        </dd>
                     </dl>
                 <?php endif; ?>
                 <ul class="help-col col-<?php echo $columnCount; ?>">
-                    <?php if($email): ?><li><a class="button" href="<?php echo $email ?>"><?php echo $this->__('E-Mail') ?></a></li><?php endif; ?>
-                    <?php if($chat): ?><li><a class="button" href="<?php echo $chat ?>">Chat</a></li><?php endif; ?>
-                    <?php if($skype): ?><li><a class="button" href="skype:<?php echo $skype; ?>?call" onclick="Skype.tryAnalyzeSkypeUri('call', '0');"><?php echo $this->__('Skype') ?></a></li><?php endif; ?>
+                    <?php if ($email): ?>
+                        <li><a class="button" href="<?php echo $email ?>"><?php echo $this->__('E-Mail') ?></a>
+                        </li><?php endif; ?>
+                    <?php if ($chat): ?>
+                        <li><a class="button" href="<?php echo $chat ?>">Chat</a></li><?php endif; ?>
+                    <?php if ($skype): ?>
+                        <li><a class="button" href="skype:<?php echo $skype; ?>?call"
+                               onclick="Skype.tryAnalyzeSkypeUri('call', '0');"><?php echo $this->__('Skype') ?></a>
+                        </li><?php endif; ?>
                 </ul>
                 <div class="clearfix"></div>
             <?php endif; ?>
-            <?php if($message) : ?> <div class="message"><?php echo $message ?></div> <?php endif; ?>
+            <?php if ($message) : ?>
+                <div class="message"><?php echo $message ?></div> <?php endif; ?>
             <?php endif; ?>
+        </div>
     </div>
 </div>
+    <?php if ($hide_box) : ?>
+            <a id="hide-box-<?php echo $widgetId; ?>" class="hide-box" href="#" title="<?php echo $this->__('Show Voucher'); ?>"><?php echo $this->__('%'); ?></a>
+    <?php endif; ?>
+
+
+    
+    

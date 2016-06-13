@@ -193,3 +193,16 @@ $border-radius:5px;
   cursor: pointer;
 }
 
+.hide-box {
+  display: none;
+  position: fixed;
+  bottom: 50%;
+  right:0;
+  padding: 0.2em;
+  font-size:$font-size-large;
+  z-index: 999999;
+  &:active, &:hover, &:focus, &:visited {
+    text-decoration: none;
+    color:#fff;
+  }
+}

@@ -146,7 +146,7 @@ jQuery(document).ready(function ($) {
         if(!closedPopup && trigger=="cart_product_attribute" && parameter==1) {
             $("#"+widgetId).fadeIn();
         }
-        if(trigger=="urlparameter" && popup_parameter==urlparameter) {
+        if(trigger=="urlparameter" && popup_parameter==urlparameter && !cookie.closed_popup) {
             setTimeout(function() {
                     $("#"+widgetId).fadeIn();
             },1000);
@@ -157,15 +157,22 @@ jQuery(document).ready(function ($) {
         }
         $('#close').click(function(){
             $("#"+widgetId).fadeOut();
+            $("#hide-box-"+widgetId).fadeIn();
             cookie.closed_popup = 1;
             Cookies.set('magepopup', cookie);
+        });
+        $("#hide-box-"+widgetId).click(function(){
+            $("#"+widgetId).fadeIn();
         });
         $('#deletecookie').click( function() {
             Cookies.remove('magepopup');
         });
+        if(cookie.closed_popup) {
+            $("#hide-box-"+widgetId).fadeIn();
+        }
+        console.log(Cookies.get('magepopup'));
     }
 
 });
 
-console.log(Cookies.get('magepopup'))
 

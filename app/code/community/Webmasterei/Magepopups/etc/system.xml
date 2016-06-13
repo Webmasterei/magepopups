@@ -72,6 +72,15 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </background_image>
+                        <background_color>
+                            <label>Background Color:</label>
+                            <comment>Give a HTML color value (border, button)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </background_color>
                         <font_color>
                             <label>Font Color:</label>
                             <comment>Give a HTML color value (border, button)</comment>

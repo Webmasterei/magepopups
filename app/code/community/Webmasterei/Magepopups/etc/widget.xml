@@ -215,6 +215,23 @@
                     <coupon><value>1</value></coupon>
                 </depends>
             </coupon_code>
+            <hide_box>
+            <label>Hidebox yes/no</label>
+            <description>On YES, the coupon box goes to the side of screen.</description>
+            <visible>1</visible>
+            <type>select</type>
+            <value>0</value>
+            <values>
+                <no>
+                    <label>No</label>
+                    <value>0</value>
+                </no>
+                <yes>
+                    <label>Yes</label>
+                    <value>1</value>
+                </yes>
+            </values>
+        </hide_box>
             <subscription>
                 <label>Subscription yes/no</label>
                 <description>Set if you need a Coupon</description>

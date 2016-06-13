@@ -132,4 +132,16 @@
   text-decoration: none;
   cursor: pointer; }
 
+.hide-box {
+  display: none;
+  position: fixed;
+  bottom: 50%;
+  right: 0;
+  padding: 0.2em;
+  font-size: 2rem;
+  z-index: 999999; }
+  .hide-box:active, .hide-box:hover, .hide-box:focus, .hide-box:visited {
+    text-decoration: none;
+    color: #fff; }
+
 /*# sourceMappingURL=magepopups.css.map */
