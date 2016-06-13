@@ -60,6 +60,36 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </button_font_color>
+                        <background_image translate="label comment">
+                            <label>Background Image</label>
+                            <comment>Allowed file types: jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">magepopups</upload_dir>
+                            <base_url type="media" scope_info="1">magepopups</base_url>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </background_image>
+                        <font_color>
+                            <label>Font Color:</label>
+                            <comment>Give a HTML color value (border, button)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </font_color>
+                        <title_background_color>
+                            <label>Title Background Color:</label>
+                            <comment>Give a HTML color value (border, button)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_background_color>
                     </fields>
                 </magepopups_blocks>
             </groups>

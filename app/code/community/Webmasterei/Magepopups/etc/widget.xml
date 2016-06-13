@@ -182,7 +182,7 @@
                 <type>text</type>
             </title>
             <message>
-                <label>Message</label>
+                <label>Bedingungen</label>
                 <visible>1</visible>
                 <required>0</required>
                 <type>text</type>

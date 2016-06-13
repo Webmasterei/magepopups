@@ -28,13 +28,13 @@ $chat = $this->getData('chat');
 $skype = $this->getData('skype');
 $whatsapp = $this->getData('whatsapp');
 $template = $this->getData('template');
+$font_color = Mage::getStoreConfig('magepopups/magepopups_blocks/font_color',Mage::app()->getStore());
 $border_color = Mage::getStoreConfig('magepopups/magepopups_blocks/border_color',Mage::app()->getStore());
-if(!$border_color) {
-    $border_color = "#3399cc";
-}
+$title_background_color = Mage::getStoreConfig('magepopups/magepopups_blocks/title_background_color',Mage::app()->getStore());
 $button_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_color',Mage::app()->getStore());
 $button_hover_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_hover_color',Mage::app()->getStore());
 $button_font_color = Mage::getStoreConfig('magepopups/magepopups_blocks/button_font_color',Mage::app()->getStore());
+$background_image = Mage::getUrl('media/magepopups') . Mage::getStoreConfig('magepopups/magepopups_blocks/background_image');;
 
 $columnCount =0;
 if($email) {
@@ -111,7 +111,24 @@ $widgetId =  preg_replace('/\s+/', '', 'shadowbox'.$trigger);
 </script>
 <style>
     .magepopup {
-        <?php if($border_color) : ?> border-color: <?php echo $border_color; ?> <?php endif; ?>
+        <?php if($font_color) {
+            echo "color:".$font_color.";";
+        }
+        ?>
+        <?php if($border_color) : ?>
+            border-color: <?php echo $border_color; ?>;
+            border: 5px solid;
+        <?php endif; ?>
+        <?php if($background_image) : ?>
+            background:url('<?php echo $background_image; ?>');
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+        <?php endif; ?>
+    }
+    .magepopup .title {
+        <?php
+        if($title_background_color) { echo "background:$title_background_color;"; }
+        ?>
     }
     .magepopup .button {
        <?php if($button_color) : ?> background-color:<?php echo $button_color; ?>; <?php endif; ?>
@@ -128,10 +145,11 @@ $widgetId =  preg_replace('/\s+/', '', 'shadowbox'.$trigger);
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($cmsblock)->toHtml() ?>
         <?php else : ?>
             <?php if($title) : ?> <div class="title"><?php echo $title ?></div> <?php endif; ?>
-            <?php if($message) : ?> <div class="message"><?php echo $message ?></div> <?php endif; ?>
             <?php if($coupon) : ?> <div class="coupon">
-                <label for="coupon-code"><?php echo $this->__('Coupon: ') ?></label>
-                <input name="coupon-code" value="<?php echo $coupon_code ?>" readonly><button class="button emailcopybtn"><?php echo $this->__('Copy'); ?></button></div> <?php endif; ?>
+                <div class="coupon-title"><?php echo $this->__('Coupon: ') ?></div>
+                <div><input name="coupon-code" value="<?php echo $coupon_code ?>" readonly></div>
+                <div><button class="button emailcopybtn"><?php echo $this->__('Copy'); ?></button></div>
+            <?php endif; ?>
             <?php if($subscription) : ?>
                 <div class="newsletter">
                     <?php if($subscription_provider=="magento") : ?>
@@ -165,6 +183,7 @@ $widgetId =  preg_replace('/\s+/', '', 'shadowbox'.$trigger);
                 </ul>
                 <div class="clearfix"></div>
             <?php endif; ?>
-        <?php endif; ?>
+            <?php if($message) : ?> <div class="message"><?php echo $message ?></div> <?php endif; ?>
+            <?php endif; ?>
     </div>
 </div>
