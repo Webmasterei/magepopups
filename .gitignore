@@ -1,4 +1,6 @@
 /*
+!composer.json
+!modman
 !.gitignore
 !app/
 app/*
@@ -43,9 +45,6 @@ app/etc/modules/*
 !js/
 js/*
 !js/magepopups
-!js/jquery-scrolldepth/
-js/jquery-scrolldepth/*
-!js/jquery-scrolldepth/jquery.scrolldepth.js
 
 !skin/
 skin/*

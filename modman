@@ -1,0 +1,6 @@
+app/code/community/Webmasterei/Magepopups                           app/code/community/Webmasterei/Magepopups
+app/design/frontend/base/default/template/webmasterei/magepopups    app/design/frontend/base/default/template/webmasterei/magepopups
+app/etc/modules/Webmasterei_Magepopups.xml                          app/etc/modules/Webmasterei_Magepopups.xml
+js/magepopups                                                       js/magepopups
+skin/frontend/base/default/css/magepopups.css                       skin/frontend/base/default/css/magepopups.css
+

@@ -7,7 +7,7 @@ Webmasterei_Magepopups XML File
 <layout version="0.1.0">
     <default>
         <reference name="head">
-            <action method="addJs"><script>js-cookie/src/js.cookie.js</script></action>
+            <action method="addJs"><script>magepopups/js.cookie.js</script></action>
             <action method="addJs"><script>magepopups/magepopups.js</script></action>
             <action method="addCss"><stylesheet>css/magepopups.css</stylesheet></action>
         </reference>

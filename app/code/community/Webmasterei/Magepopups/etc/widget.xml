@@ -412,6 +412,41 @@
                     <help><value>1</value></help>
                 </depends>
             </whatsapp>
+            <show_hint>
+                <label>Show Hint</label>
+                <description>Show a little box on pagebottom to open this Popup again.</description>
+                <visible>1</visible>
+                <type>select</type>
+                <value>0</value>
+                <values>
+                    <no>
+                        <label>No</label>
+                        <value>0</value>
+                    </no>
+                    <yes>
+                        <label>Yes</label>
+                        <value>1</value>
+                    </yes>
+                </values>
+            </show_hint>
+            <hint>
+                <label>Hint Text</label>
+                <description>The short text for the Litte Box.</description>
+                <visible>1</visible>
+                <type>text</type>
+                <depends>
+                    <show_hint><value>1</value></show_hint>
+                </depends>
+            </hint>
+            <hint_img>
+                <label>Hint Image</label>
+                <description>A little Icon for the hint.</description>
+                <visible>1</visible>
+                <type>widgetimagechooser/chooser</type>
+                <depends>
+                    <show_hint><value>1</value></show_hint>
+                </depends>
+            </hint_img>
             <template translate="label">
                 <label>Template</label>
                 <visible>0</visible>

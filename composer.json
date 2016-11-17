@@ -1,0 +1,22 @@
+{
+  "name": "webmasterei/magepopups",
+  "license": "OSL-3.0",
+  "type": "magento-module",
+  "description": "Popup Widget for Magento 1",
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*",
+    "aijko/aijko_widgetimagechooser":"*"
+  },
+  "repositories":[
+    {
+      "type": "git",
+      "url": "https://github.com/aijko/aijko-widgetimagechooser.git"
+    }
+  ],
+  "authors":[
+    {
+      "name":"Bernhard Prange",
+      "email":"info@webmasterei-prange.dew"
+    }
+  ]
+}
