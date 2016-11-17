@@ -1,22 +1,96 @@
 {
-  "name": "webmasterei/magepopups",
-  "license": "OSL-3.0",
-  "type": "magento-module",
-  "description": "Popup Widget for Magento 1",
-  "require": {
-    "magento-hackathon/magento-composer-installer": "*",
-    "aijko/aijko_widgetimagechooser":"*"
-  },
-  "repositories":[
-    {
-      "type": "git",
-      "url": "https://github.com/aijko/aijko-widgetimagechooser.git"
+    "name": "magento/core",
+    "license": "OSL-3.0",
+    "type": "magento-core",
+    "description": "Magento Core",
+    "homepage": "http://www.magentocommerce.com",
+    "require": {},
+    "extra": {
+        "map": [
+            [
+                "app",
+                "app"
+            ],
+            [
+                "dev",
+                "dev"
+            ],
+            [
+                "downloader",
+                "downloader"
+            ],
+            [
+                "errors",
+                "errors"
+            ],
+            [
+                "includes",
+                "includes"
+            ],
+            [
+                "js",
+                "js"
+            ],
+            [
+                "lib",
+                "lib"
+            ],
+            [
+                "media",
+                "media"
+            ],
+            [
+                "shell",
+                "shell"
+            ],
+            [
+                "skin",
+                "skin"
+            ],
+            [
+                "var",
+                "var"
+            ],
+            [
+                ".htaccess",
+                ".htaccess"
+            ],
+            [
+                "api.php",
+                "api.php"
+            ],
+            [
+                "cron.php",
+                "cron.php"
+            ],
+            [
+                "cron.sh",
+                "cron.sh"
+            ],
+            [
+                "favicon.ico",
+                "favicon.ico"
+            ],
+            [
+                "get.php",
+                "get.php"
+            ],
+            [
+                "index.php",
+                "index.php"
+            ],
+            [
+                "install.php",
+                "install.php"
+            ],
+            [
+                "mage",
+                "mage"
+            ],
+            [
+                "LICENSE.html",
+                "LICENSE.html"
+            ]
+        ]
     }
-  ],
-  "authors":[
-    {
-      "name":"Bernhard Prange",
-      "email":"info@webmasterei-prange.dew"
-    }
-  ]
 }

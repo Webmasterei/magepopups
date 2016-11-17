@@ -216,6 +216,10 @@ $widgetId = preg_replace('/\s+/', '', 'shadowbox' . $trigger);
     <?php if ($hide_box) : ?>
             <a id="hide-box-<?php echo $widgetId; ?>" class="hide-box" href="#" title="<?php echo $this->__('Show Voucher'); ?>"><?php echo $this->__('%'); ?></a>
     <?php endif; ?>
+<?php echo $this->getShowHint()?>
+<?php if($this->getShowHint()): ?>
+    Hello
+<?php endif; ?>
 
 
     
