@@ -7,7 +7,7 @@
                         <children>
                             <config>
                                 <children>
-                                    <magepopups translate="title" module="webmasterei_magepopups">
+                                    <magepopups translate="title" module="magepopups">
                                         <title>Webmasterei Magepopups</title>
                                         <sort_order>999</sort_order>
                                     </magepopups>
